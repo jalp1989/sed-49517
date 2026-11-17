@@ -1,0 +1,3 @@
+../Core/Src/sequence.c:15:6:Sequence_Init	1
+../Core/Src/sequence.c:21:6:Sequence_Generate	2
+../Core/Src/sequence.c:30:9:Sequence_Get	2

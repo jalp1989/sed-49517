@@ -1,0 +1,5 @@
+../Core/Src/buttons.c:44:6:Buttons_Init	1
+../Core/Src/buttons.c:53:6:Buttons_Set_Enabled	1
+../Core/Src/buttons.c:60:6:Buttons_Reset	1
+../Core/Src/buttons.c:68:8:Buttons_Get_Pending	1
+../Core/Src/buttons.c:79:6:Buttons_EXTI_Callback	6

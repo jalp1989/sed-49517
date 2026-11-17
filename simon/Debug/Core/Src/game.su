@@ -1,0 +1,9 @@
+../Core/Src/game.c:52:16:Game_Time_Reached	16	static
+../Core/Src/game.c:59:13:Start_Level	16	static
+../Core/Src/game.c:102:13:Game_Over	8	static
+../Core/Src/game.c:119:13:Game_Show_Update	16	static
+../Core/Src/game.c:173:13:Game_Input_Update	24	static
+../Core/Src/game.c:228:13:Game_Win_Update	16	static
+../Core/Src/game.c:259:13:Game_Lose_Update	16	static
+../Core/Src/game.c:285:6:Game_Init	8	static
+../Core/Src/game.c:304:6:Game_Update	16	static
