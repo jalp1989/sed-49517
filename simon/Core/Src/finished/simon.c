@@ -206,7 +206,7 @@ void Simon_StateIncreaser(bool changeState)
         /* Estado terminal.
          * Coordinator gestionará una nueva partida.
          */
-         currentLevel = 0;
+        currentLevel = 0;
         resultadoComparacion = 0;
 
         Simon_StateUpdater(true, SIMON_STATE_IDLE);
