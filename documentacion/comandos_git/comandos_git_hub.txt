@@ -1,0 +1,144 @@
+
+///////////////nuevo branch de develop///////////////////////////////////
+
+# 1. Cambiar a develop
+git checkout develop
+
+# 2. Descargar los últimos cambios de GitHub
+git pull origin develop
+
+# 3. Crear tu nueva rama
+git checkout -b feature/nueva-funcionalidad
+
+# 4. Publicarla en GitHub
+git push -u origin feature/nueva-funcionalidad
+
+
+///////////////////////////////actualizar status de los cambios en remoto//////////////////
+1. fetch: consultar y descargar cambios del remoto
+git fetch origin
+
+////////////////////////////////////fusionar ramas///////////////////////////////
+2. merge: incorporar cambios de otra rama a la actual
+Imagina que estás en feature/joseph y quieres incorporar los cambios de develop:
+
+git checkout feature/joseph
+git fetch origin
+git merge origin/develop
+
+//////////////////////////////////////decargan cambios de una misma rama///////////////
+3. pull: fetch + merge
+Si estás en develop y quieres descargar los últimos cambios de GitHub:
+
+git checkout develop
+git pull origin develop
+
+//////////////////Comparacion entre repositorio local y branch////////////////
+# Actualizar referencias remotas
+git fetch origin
+
+# Comparar tu rama local actual con main remoto
+git diff HEAD origin/main
+
+# Comparar con develop remoto
+git diff HEAD origin/develop
+
+# Comparar con feature/joseph remoto
+git diff HEAD origin/feature/joseph
+
+//////////////////////Actualizar ramas///////////////////////////
+git fetch --all --prune
+
+#Comprueba qué ramas tienes
+git branch -a
+
+# Crea tu rama develop loca
+git checkout -b develop origin/develop
+
+///////////////////Comandos github//////////////////////////
+
+usuarios github para añadirlo como collaborators	
+
+///////////////////////Pull request//////////////////////////////
+mirar fotos
+
+//////////////////////absorber cambios = merge //////////////////////////////
+# 1. Cambiar a tu rama feature
+git checkout feature/joseph
+
+# 2. Actualizar la información del repositorio remoto
+git fetch origin
+
+# 3. Incorporar develop en tu rama actual
+git merge origin/develop
+
+
+
+////////////////////////absorber cambios//////////////////////
+# 1. Situarte en develop
+git checkout develop
+
+# 2. Descargar e integrar los últimos cambios de GitHub
+git pull origin develop
+
+# 3. Crear una nueva rama desde develop
+git checkout -b feature/nueva-funcionalidad
+
+# 4. Publicar la nueva rama en GitHub
+git push -u origin feature/nueva-funcionalidad
+
+
+
+////////////////////////Merge/////////////////////////////////////
+
+
+/////////////////////Subir cambios///////////////////////////////////
+git add .
+git commit -m "Añadir funcionalidad de Ana"
+git push origin feature/ana
+
+
+/////////////////////clone//////////////////////////////////
+
+git clone https://github.com/jalp1989/sed-49517.git
+
+cd sed-49517
+
+git switch -c feature/pepito
+
+git push -u origin feature/pepito
+
+
+/////////////////////Enlazar A/////////////////////////////////////
+git remote -v
+origin  https://github.com/pepito/sed-49517.git (fetch)
+origin  https://github.com/pepito/sed-49517.git (push)
+
+git switch feature/ana
+
+
+/////////////////////Enlazar B/////////////////////////////////////
+git init
+git add .
+git commit -m "primer commit simon incompleto reparticion de modulos"
+git remote add origin https://github.com/jalp1989/sed-49517.git
+git branch  -M main
+git push -u origin main
+
+
+
+////////////////////Fork/////////////////////////////////
+
+
+////////////////////Branch/////////////////////////////////
+
+git switch -c feature/joseph
+
+git push -u origin feature/joseph	
+
+/////////////////////////Tag////////////////////////////////
+git tag -a v1.0 -m "Primera version de Simon"
+
+git push origin v1.0
+
+
