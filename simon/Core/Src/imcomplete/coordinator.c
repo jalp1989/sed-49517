@@ -3,7 +3,7 @@
 #include "simon.h"
 #include "sequence.h"
 #include "button_register.h"
-#include "buttons.h"
+//#include "buttons.h"
 #include "difficulty.h"
 #include "light.h"
 #include "led.h"
@@ -21,10 +21,7 @@ static const SimonColor *playerSequence = NULL;
 
 
 /* Funciones privadas */
-static void processSurvey(void);
-//static void initSequence(void);
-static void readInput(void);
-static void dispatchEvents(void);
+static void processGame(void);
 
 static int8_t compareSequences(const SimonColor *generatedSequence,
                                const SimonColor *playerSequence,
@@ -39,7 +36,7 @@ void Coordinator_Init(void)
     Simon_Init();
     Sequence_Init();
     ButtonRegister_Init();
-    Buttons_Init();
+    //Buttons_Init(); //esta es inicializada por ButtonRegister
     Difficulty_Init();
     Light_Init();
     LED_Init();
@@ -54,10 +51,8 @@ void Coordinator_Init(void)
  */
 void Coordinator_Update(void)
 {
-    processSurvey();
-    //initSequence();
-    readInput();
-    dispatchEvents();
+    processGame();
+
 }
 
 
@@ -65,17 +60,18 @@ void Coordinator_Update(void)
  * @brief Consulta el estado actual de Simon y gestiona
  * las acciones correspondientes a cada estado.
  */
-static void processSurvey(void)
+static void processGame(void)
 {
     SimonState currentState;
     SimonTiming timing;
-
+    int8_t comparisonResult;
 
     currentState = Simon_GetState();
 
     switch (currentState)
     {
         case SIMON_STATE_IDLE:
+
             Sequence_StartNewGame();
             ButtonRegister_Reset();
             Simon_StartGame();
@@ -126,24 +122,53 @@ static void processSurvey(void)
                 ButtonRegister_GetDataTaken())
             {
                 playerSequence = ButtonRegister_GetData();
-
+               
                 Simon_StateIncreaser(true);
+                
             }
 
             break;
 
         case SIMON_STATE_ROUND_COMPLETED:
-            /* Pendiente de implementar */
+            
+            comparisonResult = compareSequences(sequence,playerSequence,Simon_GetLevel());
+
+            if (comparisonResult == -1 || comparisonResult == 1)
+            {
+                Simon_SetComparisonResult(comparisonResult);
+                Simon_StateIncreaser(true);
+            }   
+
             break;
 
         case SIMON_STATE_GAME_OVER:
-            /* Pendiente de implementar */
+
+        if (!Sound_GetPlaying() && !Sound_GetPlayed())
+        {
+            Sound_Play_GameOver();
+        }
+
+        if (!Sound_GetPlaying() && Sound_GetPlayed())
+        {
+            Simon_StateIncreaser(true);
+            Sound_SetPlayed(false);
+        }
 
             break;
 
         case SIMON_STATE_GAME_WON:
-            /* Pendiente de implementar */
  
+        if (!Sound_GetPlaying() && !Sound_GetPlayed())
+        {
+            Sound_Play_Won();
+        }
+
+        if (!Sound_GetPlaying() && Sound_GetPlayed())
+        {
+            Simon_StateIncreaser(true);
+            Sound_SetPlayed(false);
+        }
+            
             break;
 
         default:
@@ -155,17 +180,17 @@ static int8_t compareSequences(const SimonColor *generatedSequence,
                                const SimonColor *playerSequence,
                                uint8_t length){
     uint8_t i;
-    if (generatedSequence == NULL || playerSequence == NULL)
+    if (generatedSequence == NULL || playerSequence == NULL || length == 0)
     {
-        return -1;
+        return -99;//error
     }
     for (i = 0; i < length; i++)
     {
         if (generatedSequence[i] != playerSequence[i])
         {
-            return -1;
+            return -1;//nok
         }
     }
 
-    return 1;
+    return 1;//ok
 }
