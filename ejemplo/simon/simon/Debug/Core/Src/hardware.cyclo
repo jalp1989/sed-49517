@@ -1,0 +1,7 @@
+../Core/Src/hardware.c:20:6:Hardware_Init	1
+../Core/Src/hardware.c:29:10:Hardware_Read_ADC	2
+../Core/Src/hardware.c:57:10:Hardware_Read_Potentiometer	1
+../Core/Src/hardware.c:64:10:Hardware_Read_LDR	1
+../Core/Src/hardware.c:71:6:Hardware_Set_Sound_Enabled	1
+../Core/Src/hardware.c:78:6:Buzzer_On	2
+../Core/Src/hardware.c:88:6:Buzzer_Off	1
