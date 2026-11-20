@@ -51,6 +51,7 @@ void Coordinator_Init(void)
  */
 void Coordinator_Update(void)
 {
+    LED_Update();
     processGame();
 
 }

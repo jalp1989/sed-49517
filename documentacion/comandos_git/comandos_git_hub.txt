@@ -1,4 +1,23 @@
+///////////////////// nuevo repositorio local/////////////////////
+git init
+git remote add origin https://github.com/usuario/nombre-proyecto.git
+git fetch origin
+git branch -M main
+git pull origin main
 
+////////////////// consultaro ///////////////////
+git branch
+//////////////////  cambiar de branch///////////////////////////
+git switch -c develop origin/develop
+
+git switch -c feature/ana origin/develop
+
+/////////////////// pull del branch //////////////////////////////
+
+git fetch origin
+ 
+git pull
+ 
 ///////////////nuevo branch de develop///////////////////////////////////
 
 # 1. Cambiar a develop
